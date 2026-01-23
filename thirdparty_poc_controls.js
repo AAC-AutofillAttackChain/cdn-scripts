@@ -1,7 +1,7 @@
 /*
   thirdparty_poc_controls.js
   --------------------------------------
-  Self-contained third-party (same-origin) script that:
+  Self-contained third-party (cdn) script that:
    - Injects a controls panel (Enable checkbox, interval select, manual scan, Test ID inputs, log area)
    - Scans for autofilled inputs and constructs a JSONL-schema-ready payload
    - Keeps plaintext samples optional (default true here to match your snippet; toggle via window.TP_SEND_VALUE_SAMPLE)
@@ -60,7 +60,7 @@
     h('input', { id:'tp-testIdInput', type:'text', value:(function(){
       if (window.TEST_ID) return window.TEST_ID;
       const ymd = new Date().toISOString().slice(0,10).replace(/-/g,'');
-      return 'thirdParty_sameOrigin_' + ymd;
+      return 'thirdParty_cdn_' + ymd;
     })(), style:{width:'240px'}}),
     h('button', { id:'tp-applyTestId', type:'button', style:{marginLeft:'6px'} }, ['Apply']),
     h('span', { id:'tp-testIdNow', style:{marginLeft:'10px', color:'#333'} }, []),
