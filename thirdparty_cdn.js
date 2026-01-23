@@ -136,13 +136,21 @@
       n: 12, tech: 'negative-z + overlay', title: '12) Negative z-index + overlay', desc: 'Lowered under an overlay element to block interaction/visibility.', build: (card) => {
         const wrap = document.createElement('div');
         wrap.className = 'covered-wrap';
-        wrap.style.minHeight = '48px';
+        // Ensure relative positioning so children absolute positioning works relative to this
+        wrap.style.cssText = 'position:relative; min-height:48px;';
+
         const form = document.createElement('form');
         form.className = 'negative-z';
+        // Place under the cover
+        form.style.cssText = 'position:absolute; z-index:-1; top:0; left:0;';
         form.appendChild(input('c12-u', 'username', 'username', 'username'));
         form.appendChild(input('c12-p', 'password', 'current-password', 'password', null, 'password'));
+
         const cover = document.createElement('div');
         cover.className = 'coverer';
+        // Opaque cover on top
+        cover.style.cssText = 'position:absolute; top:0; left:0; width:100%; height:100%; background-color:#fff; z-index:1;';
+
         wrap.appendChild(form);
         wrap.appendChild(cover);
         card.appendChild(wrap);
