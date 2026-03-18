@@ -150,7 +150,7 @@
         timestamp,
         local_ts,
         case_id: caseId,
-        scenario: 'same-origin',
+        scenario: 'thirdParty_cdn',
         browser: uaInfo.browser,
         // pm: window.PWD_MANAGER || 'unknown',
         input_type: f.inputType || null,
